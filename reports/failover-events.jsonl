@@ -1,0 +1,45 @@
+{"ts": 1787653959.7678256, "iso": "2026-08-25T10:32:39", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": 0, "weights": false, "error": null}
+{"ts": 1787653959.967337, "iso": "2026-08-25T10:32:39", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787653934.9690514, "embed_model_version": "embed-model=vi-e5-base@v3", "rpo_seconds": 24.01, "docs_lost": 12, "primary_latest_doc_ts": 1787653958.9473743, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787653959.9798985, "iso": "2026-08-25T10:32:39", "step": "3_scale_pool", "region": "b", "from_pool": "warm", "to_pool": "full"}
+{"ts": 1787653966.135135, "iso": "2026-08-25T10:32:46", "step": "4_wait_ready", "ready": true, "waited_s": 6.15, "reasons": ["warming_up_0.4s_left"]}
+{"ts": 1787653966.1945336, "iso": "2026-08-25T10:32:46", "step": "5_dns_cutover", "from_region": "a", "to": "b"}
+{"ts": 1787654041.4905605, "iso": "2026-08-25T10:34:01", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787654041.5601318, "iso": "2026-08-25T10:34:01", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787654041.4935918, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787654041.5949678, "iso": "2026-08-25T10:34:01", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787654042.6033187, "iso": "2026-08-25T10:34:02", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787666562.8232527, "iso": "2026-08-25T14:02:42", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787666562.9165535, "iso": "2026-08-25T14:02:42", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787666562.841166, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787666562.932186, "iso": "2026-08-25T14:02:42", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787666563.9446955, "iso": "2026-08-25T14:02:43", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787666644.2555065, "iso": "2026-08-25T14:04:04", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787666644.2558959, "iso": "2026-08-25T14:04:04", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787666644.2558959, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787666644.2558959, "iso": "2026-08-25T14:04:04", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787666645.2594624, "iso": "2026-08-25T14:04:05", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787666658.7406263, "iso": "2026-08-25T14:04:18", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787666658.7406263, "iso": "2026-08-25T14:04:18", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787666658.7406263, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787666658.7438438, "iso": "2026-08-25T14:04:18", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787666659.7467797, "iso": "2026-08-25T14:04:19", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787667184.5697489, "iso": "2026-08-25T14:13:04", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787667184.5710328, "iso": "2026-08-25T14:13:04", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787667184.5697489, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787667184.5710328, "iso": "2026-08-25T14:13:04", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787667185.5754218, "iso": "2026-08-25T14:13:05", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787667212.8238733, "iso": "2026-08-25T14:13:32", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787667212.9029846, "iso": "2026-08-25T14:13:32", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787667212.8449051, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787667212.933773, "iso": "2026-08-25T14:13:32", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787667213.9452143, "iso": "2026-08-25T14:13:33", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787667547.6725292, "iso": "2026-08-25T14:19:07", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787667547.6742394, "iso": "2026-08-25T14:19:07", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787667547.6733294, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787667547.6747422, "iso": "2026-08-25T14:19:07", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787667548.6771169, "iso": "2026-08-25T14:19:08", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787667567.2302234, "iso": "2026-08-25T14:19:27", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787667567.3287644, "iso": "2026-08-25T14:19:27", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787667567.2576847, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787667567.3741744, "iso": "2026-08-25T14:19:27", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787667568.3848894, "iso": "2026-08-25T14:19:28", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787677311.9332345, "iso": "2026-08-25T17:01:51", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787677311.9952362, "iso": "2026-08-25T17:01:51", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787677311.93552, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787677312.0295947, "iso": "2026-08-25T17:01:52", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787677313.0370347, "iso": "2026-08-25T17:01:53", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}
+{"ts": 1787677881.2096531, "iso": "2026-08-25T17:11:21", "step": "1_verify_target", "region": "b", "pool_state": "warm", "vectors": null, "weights": false, "error": null}
+{"ts": 1787677881.2653868, "iso": "2026-08-25T17:11:21", "step": "2_restore_snapshot", "ok": true, "region": "b", "backend": "fs", "snapshot_at": 1787677881.2131464, "embed_model_version": "test", "rpo_seconds": 104.02, "docs_lost": 52, "primary_latest_doc_ts": 1787654038.9636881, "restored_latest_doc_ts": 1787653934.9406605}
+{"ts": 1787677881.2802951, "iso": "2026-08-25T17:11:21", "step": "3_scale_pool", "region": "b", "from_pool": "full", "to_pool": "full"}
+{"ts": 1787677882.3025646, "iso": "2026-08-25T17:11:22", "step": "4_wait_ready", "ready": false, "waited_s": 1.0, "reasons": ["ConnectError"]}

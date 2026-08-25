@@ -29,13 +29,74 @@ URL = {"a": "http://127.0.0.1:8001", "b": "http://127.0.0.1:8002"}
 
 
 def probe(region: str, timeout: float) -> tuple[bool, str]:
-    """TODO: trả về (ready, reason). Timeout PHẢI có — netblock làm request treo mãi."""
-    raise NotImplementedError
+    """Trả về (ready, reason). Timeout PHẢI có — netblock làm request treo mãi."""
+    try:
+        r = httpx.get(f"{URL[region]}/readyz", timeout=timeout)
+    except Exception as e:
+        # Process chết  -> ConnectError (fail nhanh).
+        # netblock/SIGSTOP -> ReadTimeout/ConnectTimeout (request treo tới timeout).
+        return False, type(e).__name__
+    if r.status_code == 200:
+        return True, "ready"
+    try:
+        reasons = ";".join(r.json().get("reasons", []))
+    except Exception:
+        reasons = ""
+    return False, reasons or f"http_{r.status_code}"
 
 
 def run(interval: float, timeout: float, threshold: int, duration: float, out: pathlib.Path):
-    """TODO: vòng lặp poll + phát hiện transition + ghi JSONL."""
-    raise NotImplementedError
+    """Vòng lặp poll + phát hiện transition + ghi JSONL (chỉ ghi khi ĐỔI trạng thái).
+
+    Detect floor = interval * threshold: với interval=5, threshold=3 thì sớm nhất
+    phát hiện outage là ~15s (nằm TRONG RTO). Ghi log kèm interval_s/threshold để
+    tools/measure_rto.py tính được detect floor — thiếu là mất điểm.
+    """
+    end = time.time() + duration
+    regions = ("a", "b")
+    state = {r: "HEALTHY" for r in regions}      # khởi đầu: giả định đang healthy
+    consec_fail = {r: 0 for r in regions}
+    consec_ok = {r: 0 for r in regions}
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    def write(rec: dict) -> None:
+        with out.open("a") as f:
+            f.write(json.dumps(rec) + "\n")
+        print("HEALTH", json.dumps(rec), flush=True)
+
+    out.touch(exist_ok=True)  # đảm bảo file log tồn tại ngay cả khi không có transition
+
+    while time.time() < end:
+        cycle = time.time()
+        for region in regions:
+            ready, reason = probe(region, timeout)
+            if ready:
+                consec_fail[region] = 0
+                consec_ok[region] += 1
+                if state[region] != "HEALTHY" and consec_ok[region] >= threshold:
+                    state[region] = "HEALTHY"
+                    rec = {"ts": time.time(),
+                           "iso": time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime()),
+                           "event": "state_change", "region": region,
+                           "from": "UNHEALTHY", "to": "HEALTHY", "reason": reason,
+                           "consecutive_oks": consec_ok[region],
+                           "interval_s": interval, "threshold": threshold}
+                    write(rec)
+            else:
+                consec_ok[region] = 0
+                consec_fail[region] += 1
+                # Một lần fail KHÔNG phải outage: chỉ flip sau `threshold` fail LIÊN TIẾP.
+                if consec_fail[region] >= threshold and state[region] != "UNHEALTHY":
+                    state[region] = "UNHEALTHY"
+                    rec = {"ts": time.time(),
+                           "iso": time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime()),
+                           "event": "state_change", "region": region,
+                           "from": "HEALTHY", "to": "UNHEALTHY", "reason": reason,
+                           "consecutive_fails": consec_fail[region],
+                           "interval_s": interval, "threshold": threshold}
+                    write(rec)
+        # Ngủ phần còn lại của chu kỳ để chu kỳ đều nhau ~interval giây.
+        time.sleep(max(0.0, interval - (time.time() - cycle)))
 
 
 if __name__ == "__main__":
